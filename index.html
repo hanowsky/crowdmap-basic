@@ -149,7 +149,7 @@
           var drawing = "'"+JSON.stringify(layer.toGeoJSON().geometry)+"'";
           
           //Construct the SQL query to insert data from the three parameters: the drawing, the input username, and the input description of the drawn shape
-          var sql = "SELECT "+ cartoDBinsertfunction +"(";
+          var sql = "SELECT insert_crowd_mapping_data(";
         sql += drawing;
           sql += ","+enteredDescription;
           sql += ","+enteredUsername;
@@ -159,7 +159,7 @@
         //Sending the data
           $.ajax({
             type: 'POST',
-            url: 'https://'+cartoDBusername+'.cartodb.com/api/v2/sql',
+            url: 'https://hanowsky.cartodb.com/api/v2/sql',
             crossDomain: true,
             data: {"q":sql},
             dataType: 'json',
